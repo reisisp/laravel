@@ -9,18 +9,12 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return  "<h2>Добавление новой новости</h2>
-        <form action='#'>
-            <p><input placeholder='Введите название новости' name='text'></p>
-            <p><input placeholder='Введите описание новости' name='text'></p>
-            <p><input placeholder='Введите краткое описание новости' name='text'></p>
-            <p><input type='submit' value='Создать'></p>
-        </form>";
+        return  view('pages.admin.main');
     }
 
     public function create()
     {
-        echo "admin create"; exit;
+        return view('pages.admin.addNews');
     }
 
     public function update()
