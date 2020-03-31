@@ -7,151 +7,184 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
+    private $news = [
+        1 => [
+            'id' => '1',
+            'title' => 'Новость науки 1',
+            'content' => 'Какой-то текст',
+            'category_id' => 1
+        ],
+        2 => [
+            'id' => '2',
+            'title' => 'Новость науки 2',
+            'content' => 'Какой-то текст',
+            'category_id' => 1
+        ],
+        3 => [
+            'id' => '3',
+            'title' => 'Новость науки 3',
+            'content' => 'Какой-то текст',
+            'category_id' => 1
+        ],
+        4 => [
+            'id' => '4',
+            'title' => 'Новость науки 4',
+            'content' => 'Какой-то текст',
+            'category_id' => 1
+        ],
+        5 => [
+            'id' => '5',
+            'title' => 'Новость науки 5',
+            'content' => 'Какой-то текст',
+            'category_id' => 1
+        ],
+        6 => [
+            'id' => '6',
+            'title' => 'Новость спорта 1',
+            'content' => 'Какой-то текст',
+            'category_id' => 2
+        ],
+        7 => [
+            'id' => '7',
+            'title' => 'Новость спорта 2',
+            'content' => 'Какой-то текст',
+            'category_id' => 2
+        ],
+        8 => [
+            'id' => '8',
+            'title' => 'Новость спорта 3',
+            'content' => 'Какой-то текст',
+            'category_id' => 2
+        ],
+        9 => [
+            'id' => '9',
+            'title' => 'Новость спорта 4',
+            'content' => 'Какой-то текст',
+            'category_id' => 2
+        ],
+        10 => [
+            'id' => '10',
+            'title' => 'Новость спорта 5',
+            'content' => 'Какой-то текст',
+            'category_id' => 2
+        ],
+        11 => [
+            'id' => '11',
+            'title' => 'Новость Экономики 1',
+            'content' => 'Какой-то текст',
+            'category_id' => 3
+        ],
+        12 => [
+            'id' => '12',
+            'title' => 'Новость Экономики 2',
+            'content' => 'Какой-то текст',
+            'category_id' => 3
+        ],
+        13 => [
+            'id' => '13',
+            'title' => 'Новость Экономики 3',
+            'content' => 'Какой-то текст',
+            'category_id' => 3
+        ],
+        14 => [
+            'id' => '14',
+            'title' => 'Новость Экономики 4',
+            'content' => 'Какой-то текст',
+            'category_id' => 3
+        ],
+        15 => [
+            'id' => '15',
+            'title' => 'Новость Экономики 5',
+            'content' => 'Какой-то текст',
+            'category_id' => 3
+        ],
+        16 => [
+            'id' => '16',
+            'title' => 'Новость Политики 1',
+            'content' => 'Какой-то текст',
+            'category_id' => 4
+        ],
+        17 => [
+            'id' => '17',
+            'title' => 'Новость Политики 2',
+            'content' => 'Какой-то текст',
+            'category_id' => 4
+        ],
+        18 => [
+            'id' => '18',
+            'title' => 'Новость Политики 3',
+            'content' => 'Какой-то текст',
+            'category_id' => 4
+        ],
+        19 => [
+            'id' => '19',
+            'title' => 'Новость Политики 4',
+            'content' => 'Какой-то текст',
+            'category_id' => 4
+        ],
+        20 => [
+            'id' => '20',
+            'title' => 'Новость Политики 5',
+            'content' => 'Какой-то текст',
+            'category_id' => 4
+        ],
+        21 => [
+            'id' => '21',
+            'title' => 'Новость Игр 1',
+            'content' => 'Какой-то текст',
+            'category_id' => 5
+        ],
+        22 => [
+            'id' => '22',
+            'title' => 'Новость Игр 2',
+            'content' => 'Какой-то текст',
+            'category_id' => 5
+        ],
+        23 => [
+            'id' => '23',
+            'title' => 'Новость Игр 3',
+            'content' => 'Какой-то текст',
+            'category_id' => 5
+        ],
+        24 => [
+            'id' => '24',
+            'title' => 'Новость Игр 4',
+            'content' => 'Какой-то текст',
+            'category_id' => 5
+        ],
+        25 => [
+            'id' => '25',
+            'title' => 'Новость Игр 5',
+            'content' => 'Какой-то текст',
+            'category_id' => 5
+        ]
+    ];
+
     private $categories = [
         1 => [
             'title' => 'science',
             'rus' => 'Наука',
-            'news' => [
-                1 => [
-                    'title' => 'Новость науки 1',
-                    'body' => 'Какой-то текст'
-                ],
-                2 => [
-                    'title' => 'Новость науки 2',
-                    'body' => 'Какой-то текст'
-                ],
-                3 => [
-                    'title' => 'Новость науки 3',
-                    'body' => 'Какой-то текст'
-                ],
-                4 => [
-                    'title' => 'Новость науки 4',
-                    'body' => 'Какой-то текст'
-                ],
-                5 => [
-                    'title' => 'Новость науки 5',
-                    'body' => 'Какой-то текст'
-                ]
-            ]
         ],
         2 => [
             'title' => 'sport',
             'rus' => 'Спорт',
-            'news' => [
-                1 => [
-                    'title' => 'Новость спорта 1',
-                    'body' => 'Какой-то текст'
-                ],
-                2 => [
-                    'title' => 'Новость спорта 2',
-                    'body' => 'Какой-то текст'
-                ],
-                3 => [
-                    'title' => 'Новость спорта 3',
-                    'body' => 'Какой-то текст'
-                ],
-                4 => [
-                    'title' => 'Новость спорта 4',
-                    'body' => 'Какой-то текст'
-                ],
-                5 => [
-                    'title' => 'Новость спорта 5',
-                    'body' => 'Какой-то текст'
-                ]
-            ]
         ],
         3 => [
             'title' => 'economics',
             'rus' => 'Экономика',
-            'news' => [
-                1 => [
-                    'title' => 'Новость Экономики 1',
-                    'body' => 'Какой-то текст'
-                ],
-                2 => [
-                    'title' => 'Новость Экономики 2',
-                    'body' => 'Какой-то текст'
-                ],
-                3 => [
-                    'title' => 'Новость Экономики 3',
-                    'body' => 'Какой-то текст'
-                ],
-                4 => [
-                    'title' => 'Новость Экономики 4',
-                    'body' => 'Какой-то текст'
-                ],
-                5 => [
-                    'title' => 'Новость Экономики 5',
-                    'body' => 'Какой-то текст'
-                ]
-            ]
         ],
         4 => [
             'title' => 'politics',
             'rus' => 'Политика',
-            'news' => [
-                1 => [
-                    'title' => 'Новость Политики 1',
-                    'body' => 'Какой-то текст'
-                ],
-                2 => [
-                    'title' => 'Новость Политики 2',
-                    'body' => 'Какой-то текст'
-                ],
-                3 => [
-                    'title' => 'Новость Политики 3',
-                    'body' => 'Какой-то текст'
-                ],
-                4 => [
-                    'title' => 'Новость Политики 4',
-                    'body' => 'Какой-то текст'
-                ],
-                5 => [
-                    'title' => 'Новость Политики 5',
-                    'body' => 'Какой-то текст'
-                ]
-            ]
         ],
         5 => [
             'title' => 'games',
             'rus' => 'Игры',
-            'news' => [
-                1 => [
-                    'title' => 'Новость Игр 1',
-                    'body' => 'Какой-то текст'
-                ],
-                2 => [
-                    'title' => 'Новость Игр 2',
-                    'body' => 'Какой-то текст'
-                ],
-                3 => [
-                    'title' => 'Новость Игр 3',
-                    'body' => 'Какой-то текст'
-                ],
-                4 => [
-                    'title' => 'Новость Игр 4',
-                    'body' => 'Какой-то текст'
-                ],
-                5 => [
-                    'title' => 'Новость Игр 5',
-                    'body' => 'Какой-то текст'
-                ]
-            ]
         ]
     ];
 
-    private function navigation()
+    private function prepareNewsList($arr, $category)
     {
-        $news = route('news');
-        $home = route('home');
-
-        $html = "
-            <a href=\"{$home}\">Главная</a>
-            <a href=\"{$news}\">Новости</a>";
-        return $html;
-    }
-
-    private function prepareNewsList($arr, $category){
         $newList = "<div>";
         foreach ($arr as $key => $value) {
             $url = route('newsOne', [$category, $key]);
@@ -167,46 +200,34 @@ class NewsController extends Controller
 
     public function categories()
     {
-        $nav = $this->navigation();
-
-        $html = $nav . "<div>";
-        foreach ($this->categories as $key => $value) {
-            $url = route('category', ['category' => $value['title']]);
-            $html .= "<a href=\"{$url}\">{$value['rus']}</a> ";
-        }
-        $html .= "</div>";
-        return $html;
+        return view('pages.news.categories', [
+            'categories' => $this->categories
+        ]);
     }
 
     public function categoryOne($cat)
     {
-        $nav = $this->navigation();
+        $news = [];
         $category = '';
-        $news = '';
-        foreach ($this->categories as $key => $value) {
-            if ($cat == $value['title']){
-                $category = "<h1>Категория {$value['rus']}</h1>";
-                $news = $this->prepareNewsList($value['news'], $cat);
-            }
-        }
-        $html = $nav . $category . $news;
-        return $html;
-    }
-
-    public function newsCard($cat, $id){
-        $nav = $this->navigation();
-        $newsOne = '';
-        foreach ($this->categories as $key => $value) {
-            if ($cat == $value['title']){
-                foreach ($value['news'] as $newsKey => $newsValue){
-                    if ($newsKey == $id) {
-                        $newsOne = "<h3>{$newsValue['title']}</h3><p>{$newsValue['body']}</p>";
+        foreach ($this->categories as $id => $catName) {
+            if ($catName['title'] == $cat) {
+                $category = $catName;
+                foreach ($this->news as $key => $value) {
+                    if ($value['category_id'] == $id) {
+                        $news[$key] = $value;
                     }
                 }
             }
         }
 
-        return $nav . $newsOne;
+        return view('pages.news.categoryOne', [
+            'news' => $news,
+            'category' => $category
+        ]);
     }
+
+        public function newsCard($cat, $id){
+            return view('pages.news.newsCard', ['item' => $this->news[$id], 'category' => $cat]);
+        }
 
 }

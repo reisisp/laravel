@@ -1,7 +1,13 @@
 <?php
 
-Route::get('/', 'HomeController@index')
-    ->name('home');
+/**
+ * Главная страница
+ */
+
+Route::get('/', [
+    'uses' => 'HomeController@index',
+    'as' => 'home'
+]);
 
 /**
  * Пользовательские новости&категории
@@ -9,11 +15,12 @@ Route::get('/', 'HomeController@index')
 
 Route::group([
    'prefix' => '/news',
+    'as' => 'news::'
 ], function (){
     $controller = 'NewsController';
 
     Route::get('/', "{$controller}@categories")
-        ->name('news');
+        ->name('categories');
 
     Route::get('/{category}', "{$controller}@categoryOne")
         ->name('category');
@@ -29,7 +36,7 @@ Route::group([
  */
 Route::group([
     'prefix' => 'admin/news',
-    'namespace' => 'Admin',
+    'namespace' => 'admin',
     'as' => 'admin::news::'
 ], function(){
     $controller = 'NewsController';
