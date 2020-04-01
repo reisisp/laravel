@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent <title>Главная</title>
+    @parent Главная
 @endsection
 
 @section('content')

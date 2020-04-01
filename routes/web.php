@@ -1,20 +1,21 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /**
  * Главная страница
  */
-
 Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'home'
 ]);
 
+
 /**
  * Пользовательские новости&категории
  */
-
 Route::group([
-   'prefix' => '/news',
+    'prefix' => 'news',
     'as' => 'news::'
 ], function (){
     $controller = 'NewsController';
@@ -26,9 +27,14 @@ Route::group([
         ->name('category');
 
     Route::get('/{category}/{id}', "{$controller}@newsCard")
-        ->name('newsOne')
-        ->where('id', '[0-9]+');
+        ->name('newsOne');
 });
+
+
+Route::match(['post', 'get'], '/contacts', [
+    'uses' => 'ContactsController@index',
+    'as' => 'contacts'
+]);
 
 
 /**
@@ -43,11 +49,13 @@ Route::group([
     Route::get('/', "{$controller}@index")
         ->name('index');
 
-    Route::get('/create', 'NewsController@create')
-        ->name('create');
+    Route::match(['post', 'get'], '/addNews', "{$controller}@addNews")
+        ->name('addNews');
 
-    Route::get('/update', 'NewsController@update')
+    Route::match(['post', 'get'], '/getData', "{$controller}@getData")
+        ->name('getData');
+
+    Route::get('/update', "{$controller}@update")
         ->name('update');
 
 });
-

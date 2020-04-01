@@ -1,11 +1,12 @@
 @extends('layouts.main')
 
 @section('title')
-    @parent <title>{{$item['title']}}</title>
+    @parent Новости
 @endsection
 
 @section('content')
-    <h1>{{ $item['title'] }}</h1>
-    <p>{{ $item['content'] }}</p>
+    <h1>{{$newsCard['title']}}</h1>
+    <p>{{$newsCard['inform']}}</p>
+    <br>
     <a href="{{route('news::category', ['category' => $category])}}">Назад</a>
 @endsection

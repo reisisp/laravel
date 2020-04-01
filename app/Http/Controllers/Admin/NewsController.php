@@ -12,9 +12,13 @@ class NewsController extends Controller
         return  view('pages.admin.main');
     }
 
-    public function create()
+    public function addNews()
     {
         return view('pages.admin.addNews');
+    }
+
+    public function getData(){
+        return view('pages.admin.getData');
     }
 
     public function update()
