@@ -1,53 +1,20 @@
 <?php
 
-/**
- * Главная страница
- */
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as' => 'home'
-]);
-
-/**
- * Пользовательские новости&категории
- */
-
-Route::group([
-   'prefix' => '/news',
-    'as' => 'news::'
-], function (){
-    $controller = 'NewsController';
-
-    Route::get('/', "{$controller}@categories")
-        ->name('categories');
-
-    Route::get('/{category}', "{$controller}@categoryOne")
-        ->name('category');
-
-    Route::get('/{category}/{id}', "{$controller}@newsCard")
-        ->name('newsOne')
-        ->where('id', '[0-9]+');
+Route::get('/', function () {
+    return view('welcome');
 });
 
+Auth::routes();
 
-/**
- * Админка новостей
- */
-Route::group([
-    'prefix' => 'admin/news',
-    'namespace' => 'admin',
-    'as' => 'admin::news::'
-], function(){
-    $controller = 'NewsController';
-    Route::get('/', "{$controller}@index")
-        ->name('index');
-
-    Route::get('/create', 'NewsController@create')
-        ->name('create');
-
-    Route::get('/update', 'NewsController@update')
-        ->name('update');
-
-});
-
+Route::get('/home', 'HomeController@index')->name('home');
